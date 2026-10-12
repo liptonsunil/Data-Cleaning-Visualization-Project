@@ -1,0 +1,26 @@
+step,detail,rows_affected
+load,rows x cols = 3160 x 12,3160
+text,trimmed/title-cased 'segment',0
+text,trimmed/title-cased 'region',389
+text,trimmed/title-cased 'channel',193
+text,trimmed/title-cased 'category',39
+text,merged 'Home and Kitchen' spelling variant,23
+numeric,converted 'unit_price' to numbers (new NaNs from junk text),31
+numeric,converted 'quantity' to numbers (new NaNs from junk text),0
+numeric,converted 'discount' to numbers (new NaNs from junk text),0
+numeric,converted 'customer_age' to numbers (new NaNs from junk text),0
+numeric,converted 'rating' to numbers (new NaNs from junk text),0
+dates,dropped rows with unparseable/impossible dates,12
+duplicates,removed exact duplicate rows,133
+duplicates,removed repeated order_id (near-duplicates),27
+invalid,quantity <= 0 set to missing,9
+invalid,customer_age outside 16-100 set to missing,65
+outliers,unit_price capped at 1.5xIQR within category,24
+outliers,quantity capped at 1.5xIQR,21
+missing,'segment' -> 'Unknown',119
+missing,'region' -> 'Unknown',90
+missing,discount -> 0 (assumed no discount),148
+missing,'unit_price' -> median by category,30
+missing,'quantity' -> median by category,69
+missing,'customer_age' -> median by segment,273
+missing,rating left missing (flagged in rating_missing),537
